@@ -44,12 +44,13 @@ canvas.addEventListener('mousemove', (e) => {
 
 // Event listener for bar control using touch (for mobile)
 canvas.addEventListener('touchmove', (e) => {
+    e.preventDefault(); // Prevent page scroll during touch
+
     const canvasRect = canvas.getBoundingClientRect();
-    const touchX = e.touches[0].clientX - canvasRect.left;
-    bar.x = touchX - bar.width / 2;
-    if (bar.x < 0) bar.x = 0;
-    if (bar.x + bar.width > canvas.width) bar.x = canvas.width - bar.width;
-    e.preventDefault();  // Prevent scrolling while touching the canvas
+    const touchX = e.touches[0].clientX - canvasRect.left; // Get touch position
+    bar.x = touchX - bar.width / 2; // Center the bar on the touch
+    if (bar.x < 0) bar.x = 0; // Prevent the bar from going off the left
+    if (bar.x + bar.width > canvas.width) bar.x = canvas.width - bar.width; // Prevent the bar from going off the right
 });
 
 // Reset button functionality
