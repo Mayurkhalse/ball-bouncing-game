@@ -25,7 +25,7 @@ const bar = {
     dx: 5,
 };
 
-// Event listeners for bar control
+// Event listeners for bar control using keyboard
 document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft' && bar.x > 0) {
         bar.x -= bar.dx;
@@ -34,11 +34,22 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+// Event listener for bar control using mouse (for desktop)
 canvas.addEventListener('mousemove', (e) => {
     const canvasRect = canvas.getBoundingClientRect();
     bar.x = e.clientX - canvasRect.left - bar.width / 2;
     if (bar.x < 0) bar.x = 0;
     if (bar.x + bar.width > canvas.width) bar.x = canvas.width - bar.width;
+});
+
+// Event listener for bar control using touch (for mobile)
+canvas.addEventListener('touchmove', (e) => {
+    const canvasRect = canvas.getBoundingClientRect();
+    const touchX = e.touches[0].clientX - canvasRect.left;
+    bar.x = touchX - bar.width / 2;
+    if (bar.x < 0) bar.x = 0;
+    if (bar.x + bar.width > canvas.width) bar.x = canvas.width - bar.width;
+    e.preventDefault();  // Prevent scrolling while touching the canvas
 });
 
 // Reset button functionality
