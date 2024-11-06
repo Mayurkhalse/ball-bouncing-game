@@ -1,0 +1,45 @@
+/* Apply a soft gradient background to the entire page */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+    font-family: Arial, sans-serif;
+}
+
+.game-container {
+    text-align: center;
+}
+
+/* Style the canvas where the game will play */
+#gameCanvas {
+    background-color: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+/* Styling for the score display */
+.score-display {
+    margin: 10px 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+/* Style the reset button */
+#resetButton {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #ff6b6b;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Add a hover effect to the reset button */
+#resetButton:hover {
+    background-color: #ff4757;
+}
